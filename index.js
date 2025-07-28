@@ -7,6 +7,7 @@ import homeRoutes from "./route/home.js";
 import mongodbConnect from "./connection.js";
 const app = express();
 const PORT = process.env.PORT;
+dotenv.config();
 const URI = process.env.URI;
 mongodbConnect(URI);
 app.use(express.json());
