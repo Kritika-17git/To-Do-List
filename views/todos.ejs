@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styleForTodo.css">
+    <title>To-Do List</title>
+</head>
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <h1>YOUR TO-DO LIST <i class='bx bx-calendar-detail'></i></h1>
+            <div id="toast" class="alert"></div>
+            <div class="row">
+                <form action="/home" method="post">
+                    <input type="text" id="input-box" name="todo" placeholder="Add Your Todo">
+                    <button type="submit">ADD</button>
+                </form>
+            </div>
+            <ul id="list-container">
+                <% if(tasks.length === 0) { %>
+                    <li class="no-task">No tasks available</li>
+                <% }else { %>
+                    <% tasks.forEach(element => { %>
+                        <li data-id="<%= element._id %>" class="<%= element.checked ? 'checked' : '' %>">
+                        <%= element.task %>
+                        <span class="icon" onclick="event.stopPropagation(); deleteTask('<%= element._id %>')">
+                            <i class='bx bx-trash'></i>
+                        </span>
+                    </li>
+                    <% }); %>  
+                <% } %>
+            </ul>
+            <% if (toast) { %>
+                <script>
+                    window.onload = () => showToast("<%= toast %>");
+                </script>
+            <% } %>
+        </div>
+    </div>
+    <script src="scriptForTodo.js"></script>
+</body>
+</html>
