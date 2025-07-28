@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import dotenv from "dotenv/config"
+import dotenv from "dotenv"
 import session from "express-session"
 import cookieParser from "cookie-parser";
 import homeRoutes from "./route/home.js";
